@@ -28,7 +28,7 @@ function logout() {
 async function loadUser() {
   if (!state.token) return;
   try {
-    const res = await fetch('routers/auth/me', {
+    const res = await fetch('/auth/me', {
       headers: { 'Authorization': `Bearer ${state.token}`, 'Content-Type': 'application/json' }
     });
     if (res.ok) {
@@ -148,7 +148,7 @@ async function doLogin() {
   btn.textContent = 'Signing in...';
 
   try {
-    const res = await fetch('routers/auth/login', {
+    const res = await fetch('/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
@@ -238,7 +238,7 @@ async function doRegister() {
   btn.textContent = 'Creating account...';
 
   try {
-    const res = await fetch('routers/auth/register', {
+    const res = await fetch('/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })
@@ -257,7 +257,7 @@ async function doRegister() {
       return;
     }
 
-    const loginRes = await fetch('routers/auth/login', {
+    const loginRes = await fetch('/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
