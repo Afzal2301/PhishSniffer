@@ -25,7 +25,6 @@ async def scan_url(url: str) -> dict:
 
             url_id = encode_resp.json()["data"]["id"]
 
-            # Retry up to 3 times waiting for analysis to complete
             for attempt in range(3):
                 await asyncio.sleep(5)
                 result = await client.get(

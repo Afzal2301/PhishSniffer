@@ -48,8 +48,6 @@ async def get_current_user(
     result = await db.execute(select(User).where(User.username == username))
     return result.scalar_one_or_none()
 
-
-# This version is for FastAPI dependency injection (uses Depends)
 async def get_current_user_from_request(
     token: Optional[str] = Depends(oauth2_scheme),
     db: AsyncSession = Depends(get_db)
